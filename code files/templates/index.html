@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGenie - AI Learning Assistant</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>EduGenie</h1>
+        <p class="subtitle">AI Powered Learning Assistant</p>
+
+        <div class="card">
+
+            <h2>Ask EduGenie</h2>
+
+            <textarea
+                id="question"
+                placeholder="Ask your question here..."
+            ></textarea>
+
+            <button onclick="askQuestion()">
+                Ask Question
+            </button>
+
+            <div id="answer" class="result"></div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Explain a Topic</h2>
+
+            <input
+                type="text"
+                id="topic"
+                placeholder="Enter a topic..."
+            >
+
+            <button onclick="explainTopic()">
+                Explain
+            </button>
+
+            <div id="explanation" class="result"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        async function askQuestion() {
+
+            const question =
+                document.getElementById("question").value;
+
+            const answer =
+                document.getElementById("answer");
+
+            if (!question.trim()) {
+                answer.innerText = "Please enter a question.";
+                return;
+            }
+
+            answer.innerText = "Thinking...";
+
+            try {
+
+                const response = await fetch("/qa", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        question: question
+                    })
+                });
+
+                const data = await response.json();
+
+                answer.innerText =
+                    data.answer || JSON.stringify(data);
+
+            } catch (error) {
+
+                answer.innerText =
+                    "Something went wrong. Please try again.";
+
+            }
+        }
+
+
+        async function explainTopic() {
+
+            const topic =
+                document.getElementById("topic").value;
+
+            const explanation =
+                document.getElementById("explanation");
+
+            if (!topic.trim()) {
+                explanation.innerText =
+                    "Please enter a topic.";
+                return;
+            }
+
+            explanation.innerText = "Explaining...";
+
+            try {
+
+                const response = await fetch("/explain", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        text: topic
+                    })
+                });
+
+                const data = await response.json();
+
+                explanation.innerText =
+                    data.answer || JSON.stringify(data);
+
+            } catch (error) {
+
+                explanation.innerText =
+                    "Something went wrong. Please try again.";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

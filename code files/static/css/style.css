@@ -1,0 +1,358 @@
+/* =========================================
+   EduGenie - Modern Colorful UI
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 10%, #eee4ff 0, transparent 28%),
+        radial-gradient(circle at 90% 15%, #dff4ff 0, transparent 30%),
+        linear-gradient(135deg, #faf8ff, #f7fbff);
+
+    color: #202044;
+}
+
+/* Main container */
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+    padding: 45px 0 60px;
+}
+
+/* Header */
+
+.container > h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    background: linear-gradient(
+        90deg,
+        #6c35ff,
+        #b22cff,
+        #ff4fa3
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #6d6b86;
+    margin-bottom: 35px;
+}
+
+/* Cards */
+
+.card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+
+    border-radius: 24px;
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 15px 45px rgba(72, 52, 130, 0.10);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 20px 55px rgba(72, 52, 130, 0.16);
+}
+
+/* Different colors for cards */
+
+.card:nth-of-type(1) {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(244, 237, 255, 0.95),
+            rgba(255, 255, 255, 0.95)
+        );
+
+    border-left: 6px solid #8b5cf6;
+}
+
+.card:nth-of-type(2) {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(231, 245, 255, 0.95),
+            rgba(255, 255, 255, 0.95)
+        );
+
+    border-left: 6px solid #3b82f6;
+}
+
+/* Card headings */
+
+.card h2 {
+    font-size: 27px;
+    margin-bottom: 20px;
+
+    color: #25224d;
+}
+
+/* Text area */
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+
+    resize: vertical;
+
+    border: 2px solid #e6e1f4;
+    border-radius: 16px;
+
+    padding: 16px;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    background: #ffffff;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+textarea::placeholder {
+    color: #aaa6bd;
+}
+
+textarea:focus {
+    border-color: #8b5cf6;
+
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+/* Text input */
+
+input[type="text"] {
+    width: 100%;
+
+    padding: 15px 17px;
+
+    border-radius: 15px;
+    border: 2px solid #dce8f5;
+
+    background: white;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa6bd;
+}
+
+input[type="text"]:focus {
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* Buttons */
+
+button {
+    border: none;
+    border-radius: 14px;
+
+    padding: 13px 24px;
+
+    margin-top: 15px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    color: white;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    box-shadow:
+        0 8px 20px rgba(124, 58, 237, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(124, 58, 237, 0.32);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Explain button */
+
+.card:nth-of-type(2) button {
+    background:
+        linear-gradient(
+            135deg,
+            #168bf5,
+            #36b5ff
+        );
+
+    box-shadow:
+        0 8px 20px rgba(22, 139, 245, 0.22);
+}
+
+/* Result areas */
+
+.result {
+    margin-top: 22px;
+
+    min-height: 10px;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background: #f8f7ff;
+
+    color: #3d3a5c;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    border: 1px solid #eeeafd;
+}
+
+/* Empty result */
+
+.result:empty {
+    display: none;
+}
+
+/* Decorative glow */
+
+.container::before {
+    content: "";
+
+    position: fixed;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(168, 85, 247, 0.12);
+
+    filter: blur(60px);
+
+    top: 60px;
+    right: 50px;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.container::after {
+    content: "";
+
+    position: fixed;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(59, 130, 246, 0.10);
+
+    filter: blur(55px);
+
+    bottom: 50px;
+    left: 40px;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+/* Small decorative line */
+
+.card h2::before {
+    content: "✦ ";
+
+    color: #9b6cff;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 92%;
+        padding-top: 30px;
+    }
+
+    .container > h1 {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .card h2 {
+        font-size: 23px;
+    }
+
+    textarea {
+        min-height: 110px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
